@@ -2,9 +2,9 @@ name: Laravel-lint
 
 on:
   push:
-    branches: [ "master" ]
+    branches: [ "main" ]
   pull_request:
-    branches: [ "master" ]
+    branches: [ "main" ]
 
 jobs:
   laravel-lint:
@@ -31,6 +31,9 @@ jobs:
       
     - name: Execute Laravel Pint
       run: vendor/bin/pint 
+
     - name: Commit and push changes if Pint modified files
       uses: stefanzweifel/git-auto-commit-action@v4
-
+      with:
+        commit_message: PHP Linting (Pint)
+        skip_fetch: true
